@@ -1,7 +1,9 @@
 export const PATHS = {
   HOME: '/',
-  ARCHITECTURE: '/architecture',
-  DESIGN_PATTERN: '/design-pattern',
+  CATEGORY: '/category/:categoryKey',
   RESULT: '/result',
   QUESTION_DETAIL: '/question/:id',
 };
+
+export const generateCategoryPath = (categoryKey: string) =>
+  PATHS.CATEGORY.replace(':categoryKey', categoryKey);

@@ -1,16 +1,21 @@
 import { Link } from 'react-router-dom';
-import { PATHS } from '../routes/paths';
-import { Box, Heading, VStack, Button } from '@chakra-ui/react';
+import { generateCategoryPath } from '../routes/paths';
+import { Heading, VStack, Button } from '@chakra-ui/react';
+import CenterLayout from '../components/layout/CenterLayout';
 
 const HomePage: React.FC = () => {
   return (
-    <Box p={8}>
+    <CenterLayout>
       <Heading as="h1" size="xl" mb={6} textAlign="center">Home</Heading>
       <VStack align="start" mb={8}>
-        <Button asChild><Link to={PATHS.ARCHITECTURE}>アーキテクチャ</Link></Button>
-        <Button asChild><Link to={PATHS.DESIGN_PATTERN}>デザインパターン</Link></Button>
+        <Button asChild>
+          <Link to={generateCategoryPath('architecture')}>アーキテクチャ</Link>
+        </Button>
+        <Button asChild>
+          <Link to={generateCategoryPath('design_pattern')}>デザインパターン</Link>
+        </Button>
       </VStack>
-    </Box>
+    </CenterLayout>
   );
 };
 
