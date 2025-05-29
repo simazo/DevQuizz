@@ -1,0 +1,11 @@
+node_modules
+coverage/
+.DS_Store
+.env
+.gitignorie
+
+# ビルド成果物（例：TypeScript, Babel など使用時）
+dist/
+build/
+out/
+*.tsbuildinfo 

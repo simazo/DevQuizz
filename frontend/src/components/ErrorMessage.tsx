@@ -1,0 +1,1 @@
+export const ErrorMessage = ({ message }: { message: string }) => <p>{message}</p>;
