@@ -1,5 +1,6 @@
 import { BrowserRouter, useRoutes } from 'react-router-dom';
 import { routes } from './routes/routeConfig';
+import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
 
 const AppRoutes = () => {
   const element = useRoutes(routes);
@@ -9,7 +10,9 @@ const AppRoutes = () => {
 const App: React.FC = () => {
   return(
     <BrowserRouter>
-      <AppRoutes />
+      <ChakraProvider value={defaultSystem}>
+        <AppRoutes />
+      </ChakraProvider>
     </BrowserRouter>
   );
 };
