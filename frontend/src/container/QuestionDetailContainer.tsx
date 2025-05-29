@@ -5,13 +5,15 @@ import type { FetchQuestionDetailParams } from 'src/types/fetchQuestionDetailPar
 import QuestionText from '../components/QuestionText';
 import QuestionCategory from '../components/QuestionCategory';
 import ChoiceList from '../components/ChoiceList';
+import Explanation from '../components/Explanation';
+import CorrectAnswer from '../components/CorrectAnswer';
 
 export const QuestionDetailContainer: React.FC<FetchQuestionDetailParams> = ({id}) => {
   const { question, loading, error } = useQuestionDetail(id);
 
   if (error) return <ErrorMessage message={error} />;
   if (loading || !question) return <Loading />;
-
+  
   return (
     <>
       <QuestionCategory
@@ -20,9 +22,10 @@ export const QuestionDetailContainer: React.FC<FetchQuestionDetailParams> = ({id
       />
       <QuestionText id={question.id} text={question.questionText} />
       <ChoiceList choices={question.choices} />
+
+      <Explanation explanation={question.explanation} />
+      <CorrectAnswer correctAnswerId={question.correctAnswerId} />
     </>
-
-
   );
 };
 

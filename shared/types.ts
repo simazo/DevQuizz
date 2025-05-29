@@ -18,12 +18,12 @@ export type Question = {
   id: number;
   questionText: string;
   choices: Choice[];
-  // mainCategory: MainCategory;
-  // subCategory: SubCategory;
   mainCategoryId: number;
   mainCategoryName: string;
   subCategoryId: number;
   subCategoryName: string;
+  explanation: string;
+  correctAnswerId: number;
   hint: string;
 };
 

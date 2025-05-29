@@ -9,8 +9,9 @@ export function toQuestionResponseDto(q: Question) {
     mainCategoryName: q.mainCategory.name,
     subCategoryId: q.subCategory.id,
     subCategoryName: q.subCategory.name,
-    hint: q.hint
-    // explanation や correctAnswerId は返さない
+    hint: q.hint,
+    explanation: q.explanation,
+    correctAnswerId: q.correctAnswerId,
   };
 }
 

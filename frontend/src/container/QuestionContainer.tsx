@@ -36,7 +36,7 @@ const QuestionContainer: React.FC<FetchQuestionsParams> = ({categoryId, limit}) 
 
   if (error) return <ErrorMessage message={error} />;
   if (loading || !question) return <Loading />;
-console.log('question:', question);
+
   return (
     <>
       <QuestionCategory
