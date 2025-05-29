@@ -1,12 +1,24 @@
+import { Box, Text } from '@chakra-ui/react';
+
 type Props = {
+  id: number;
   text: string;
 }
 
-const QuestionText: React.FC<Props> = ({ text }) => {
+const QuestionText: React.FC<Props> = ({ id, text }) => {
   return (
-    <section style={{ backgroundColor: '#f5f5f5', padding: '1rem', borderRadius: '0.5rem' }}>
-    <p>{text}</p>
-    </section>
+    <Box
+      bg="gray.100"
+      p={4}
+      borderRadius="md"
+      boxShadow="sm"
+      mb={4}
+    >
+      <Text fontSize="sm" color="gray.500" mb={2}>
+        問題ID: {id}
+      </Text>
+      <Text fontSize="lg">{text}</Text>
+    </Box>
   );
 };
 

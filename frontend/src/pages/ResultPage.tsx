@@ -4,11 +4,16 @@ import { useScore } from '../hooks/useScore';
 import { Loading } from '../components/Loading';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { QuestionResultItem } from '../components/QuestionResultItem';
+import {
+  Box,
+  Heading,
+  Text,
+  List,
+  Button,
+  VStack,
+} from '@chakra-ui/react';
 
 const ResultPage: React.FC = () => {
-  // const raw = sessionStorage.getItem('userAnswers');
-  // if (!raw) return;
-  // console.log(JSON.parse(raw));
   const { score, loading, error } = useScore();
 
   if (loading) return <Loading />;
@@ -16,12 +21,17 @@ const ResultPage: React.FC = () => {
   if (!score) return <ErrorMessage message="スコアが取得できませんでした。" />;
 
   return (
-    <div style={{ padding: '2rem', textAlign: 'center' }}>
-      <h1>結果発表！</h1>
-      <p>全{score.totalQuestions}問中、{score.correctAnswers}問正解！</p>
-      <p>正解率: {(score.correctRate * 100).toFixed(2)}%</p>
-      <h2 style={{ marginTop: '2rem' }}>各問題の結果</h2>
-      <ul style={{ textAlign: 'left', display: 'inline-block', marginTop: '1rem' }}>
+    <Box maxW="3xl" mx="auto" p={6} textAlign="center">
+      <Heading size="xl" mb={4}>結果発表！</Heading>
+      <Text fontSize="lg" mb={2}>
+        全{score.totalQuestions}問中、{score.correctAnswers}問正解！
+      </Text>
+      <Text fontSize="lg" mb={6}>
+        正解率: {(score.correctRate * 100).toFixed(2)}%
+      </Text>
+
+      <Heading size="md" mt={8} mb={4}>各問題の結果</Heading>
+      <List.Root textAlign="left" listStyleType="none">
         {score.questionResultSummary.map((q, index) => (
           <QuestionResultItem
             key={q.id}
@@ -33,10 +43,16 @@ const ResultPage: React.FC = () => {
             questionPreview={q.questionPreview}
           />
         ))}
-      </ul>
+      </List.Root>
 
-      <Link to={PATHS.HOME}>ホームへ戻る</Link>
-    </div>
+      <VStack mt={10}>
+        <Button asChild>
+          <Link to={PATHS.HOME} >
+            ホームへ戻る
+          </Link>
+        </Button>
+      </VStack>
+    </Box>
   );
 };
 

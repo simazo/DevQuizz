@@ -1,31 +1,64 @@
 import type { Choice } from "@shared/types";
+import {
+  Button,
+  HStack,
+  Text,
+  Stack,
+  Box,
+} from '@chakra-ui/react';
 
 type Props = {
   choices: Choice[];
-  onSelect: (choice: Choice, index: number) => void;
+  onSelect?: (choice: Choice, index: number) => void;
+  isSelectable?: boolean;
 };
 
-const ChoiceList: React.FC<Props> = ({choices, onSelect}) => {
+const ChoiceList: React.FC<Props> = ({ choices, onSelect, isSelectable = false }) => {
   return (
-    <div style={{ marginTop: '1rem' }}>
+    <Stack mt={4}>
       {choices.map((choice, index) => (
-        <button
+        <HStack
           key={choice.id}
-          onClick={() => onSelect(choice, index)}
-          style={{
-            display: 'block',
-            marginBottom: '0.5rem',
-            padding: '0.5rem 1rem',
-            borderRadius: '0.5rem',
-            backgroundColor: '#e0e0e0',
-            border: 'none',
-            cursor: 'pointer'
-          }}
+          align="center"
+          p={3}
+          borderWidth="1px"
+          borderRadius="md"
+          _hover={isSelectable ? { bg: 'gray.50' } : undefined}
+          cursor={isSelectable ? 'pointer' : 'default'}
+          onClick={isSelectable && onSelect ? () => onSelect(choice, index) : undefined}
+          pointerEvents={isSelectable ? 'auto' : 'none'}
         >
-          {`${index + 1}. ${choice.choiceText}`}
-        </button>
+          {isSelectable ? (
+            <Button
+              size="sm"
+              colorScheme="blue"
+              variant="solid"
+              pointerEvents="none"
+              minW="32px"
+            >
+              {index + 1}
+            </Button>
+          ) : (
+            <Box
+              as="span"
+              px={3}
+              py={1}
+              fontSize="sm"
+              fontWeight="semibold"
+              color="white"
+              bg="gray.400"
+              borderRadius="md"
+              userSelect="none"
+              minW="32px"
+              textAlign="center"
+            >
+              {index + 1}
+            </Box>
+          )}
+          <Text>{choice.choiceText}</Text>
+        </HStack>
       ))}
-    </div>
+    </Stack>
   );
 };
 

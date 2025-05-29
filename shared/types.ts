@@ -18,8 +18,12 @@ export type Question = {
   id: number;
   questionText: string;
   choices: Choice[];
-  mainCategory: MainCategory;
-  subCategory: SubCategory;
+  // mainCategory: MainCategory;
+  // subCategory: SubCategory;
+  mainCategoryId: number;
+  mainCategoryName: string;
+  subCategoryId: number;
+  subCategoryName: string;
   hint: string;
 };
 

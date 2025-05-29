@@ -1,3 +1,5 @@
+import { Box, Text } from '@chakra-ui/react';
+
 type Props = {
   hint: string;
   visible: boolean;
@@ -7,9 +9,18 @@ const Hint: React.FC<Props> = ({ hint, visible }) => {
   if (!visible) return null;
 
   return (
-    <div style={{ marginTop: '1rem', padding: '0.5rem', backgroundColor: '#f9f9f9' }}>
-      <strong>ヒント：</strong> {hint}
-    </div>
+    <Box
+      mt={4}
+      p={3}
+      bg="gray.100"
+      borderRadius="md"
+      boxShadow="sm"
+      maxW="lg"
+      w="100%"
+    >
+      <Text fontWeight="bold" mb={1}>ヒント：</Text>
+      <Text>{hint}</Text>
+    </Box>
   );
 };
 
