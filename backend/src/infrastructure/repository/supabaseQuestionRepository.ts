@@ -10,15 +10,12 @@ import { QuestionRecordMapper } from "../mapper/questionRecordMapper";
 export class SupabaseQuestionRepository implements QuestionRepository {
   async getQuestionsByCategory(mainCategoryId: number, limit: number): Promise<Question[]> {
     const { data, error } = await supabase
-      .from('questions')
-      .select(`
-        *,
-        main_categories (id, name),
-        sub_categories (id, name, main_category_id)
-      `)
-      .eq('main_category_id', mainCategoryId)
-      .limit(limit);
+    .rpc('get_random_questions_by_category', {
+      cat_id: mainCategoryId,
+      lim: limit
+    });
 
+    //console.log(data);
     if (error) {
       throw new InfraError(error.message);
     }
@@ -26,8 +23,8 @@ export class SupabaseQuestionRepository implements QuestionRepository {
     return (data ?? []).map((record: any) =>
       QuestionRecordMapper.toDomain({
         ...record,
-        main_category_name: record.main_categories.name,
-        sub_category_name: record.sub_categories.name,
+        main_category_name: record.main_category_name,
+        sub_category_name: record.sub_category_name,
       })
     );
   }
