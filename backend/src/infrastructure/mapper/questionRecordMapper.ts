@@ -9,7 +9,7 @@ export class QuestionRecordMapper {
     choice2: string;
     choice3: string;
     choice4: string;
-    correctAnswerId: number;
+    correct_answer_id: number;
     explanation: string;
     hint: string;
     main_category_id: number;
@@ -39,7 +39,7 @@ export class QuestionRecordMapper {
       id: record.id,
       questionText: record.question_text,
       choices,
-      correctAnswerId: record.correctAnswerId,
+      correctAnswerId: record.correct_answer_id,
       mainCategory: {
         id: record.main_category_id,
         name: record.main_category_name
