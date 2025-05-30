@@ -7,7 +7,7 @@ const HomePage: React.FC = () => {
   return (
     <CenterLayout>
       <Heading as="h1" size="xl" mb={6} textAlign="center">DevQuizz</Heading>
-      <Text fontWeight="bold" mb={6}>挑戦したいカテゴリを選んでください</Text>
+      <Text fontWeight="bold" mb={6}>選んだカテゴリが10問出題されます</Text>
       <VStack align="start" mb={8}>
         <Button asChild>
           <Link to={generateCategoryPath('architecture')}>アーキテクチャ</Link>

@@ -27,7 +27,11 @@ const ResultPage: React.FC = () => {
         全{score.totalQuestions}問中、{score.correctAnswers}問正解！
       </Text>
       <Text fontSize="lg" mb={6}>
-        正解率: {(score.correctRate * 100).toFixed(2)}%
+        正解率: {
+          Number.isInteger(score.correctRate * 100)
+            ? (score.correctRate * 100).toFixed(0)
+            : (score.correctRate * 100).toFixed(2)
+        }%
       </Text>
 
       <Heading size="md" mt={8} mb={4}>各問題の結果</Heading>
