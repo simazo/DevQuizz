@@ -41,5 +41,7 @@ export const useQuestions = ({categoryId, limit}: FetchQuestionsParams) => {
     error: questionState.error,
     next,
     hasNext,
+    currentIndex,
+    total: questionState.data?.length ?? 0,
   };
 };

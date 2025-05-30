@@ -8,12 +8,13 @@ import QuestionText from '../components/QuestionText';
 import ChoiceList from '../components/ChoiceList';
 import HintSection from '../components/HintSection';
 import QuestionCategory from '../components/QuestionCategory';
+import QuestionProgress from '../components/QuestionProgress';
 import { PATHS } from '../routes/paths';
 import { Loading } from '../components/Loading';
 import { ErrorMessage } from '../components/ErrorMessage';
 
 const QuestionContainer: React.FC<FetchQuestionsParams> = ({categoryId, limit}) => {
-  const { question, loading, error, next, hasNext } = useQuestions({ categoryId, limit });
+  const { question, loading, error, next, hasNext, currentIndex, total } = useQuestions({ categoryId, limit });
   const { addAnswer, resetAnswers } = useAnswer();
   const navigate = useNavigate();
 
@@ -39,6 +40,7 @@ const QuestionContainer: React.FC<FetchQuestionsParams> = ({categoryId, limit}) 
 
   return (
     <>
+      <QuestionProgress currentIndex={currentIndex} total={total} />
       <QuestionCategory
         mainCategoryName={question.mainCategoryName}
         subCategoryName={question.subCategoryName}
