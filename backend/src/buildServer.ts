@@ -19,8 +19,21 @@ export async function buildServer() {
   
   // CORS設定
   await fastify.register(cors, {
-    origin: process.env.CORS_ORIGIN || '*',
+    origin: (origin, cb) => {
+      const allowedOrigins = [
+        process.env.CORS_ORIGIN_LOCAL,
+        process.env.CORS_ORIGIN,
+      ];
+
+      if (!origin || allowedOrigins.includes(origin)) {
+        cb(null, true);
+      } else {
+        cb(new Error("Not allowed by CORS"), false);
+      }
+    },
+    credentials: true,
   });
+
 
   // DI: usecase ← repository
   const repositoryMode = process.env.REPOSITORY_MODE;
