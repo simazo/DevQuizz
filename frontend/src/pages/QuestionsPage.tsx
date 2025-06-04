@@ -27,7 +27,7 @@ const QuestionsPage: React.FC = () => {
     <CenterLayout>
       <Heading as="h1" size="xl" mb={6} textAlign="center">{config.title}</Heading>
       <VStack align="start" mb={8}>
-        <QuestionContainer categoryId={config.categoryId} limit={10} />
+        <QuestionContainer categoryId={config.categoryId} limit={100} />
       </VStack>
     </CenterLayout>
   );
