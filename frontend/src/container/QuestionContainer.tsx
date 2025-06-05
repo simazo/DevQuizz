@@ -47,7 +47,7 @@ const QuestionContainer: React.FC<FetchQuestionsParams> = ({categoryId, limit}) 
       />
       <QuestionText id={question.id} text={question.questionText} />
       <ChoiceList choices={question.choices} isSelectable onSelect={handleSelect} />
-      <HintSection hint={question.hint} />
+      <HintSection hint={question.hint} questionId={question.id} />
     </>
   );
 };
