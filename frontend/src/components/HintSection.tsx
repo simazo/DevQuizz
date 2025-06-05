@@ -1,13 +1,14 @@
-import { useState } from 'react';
 import { Button, Box } from '@chakra-ui/react';
 import Hint from './Hint';
+import { useShowHint } from '../hooks/useShowHint';
 
 type Props = {
   hint: string;
+  questionId: number;
 };
 
-const HintSection: React.FC<Props> = ({ hint }) => {
-  const [showHint, setShowHint] = useState(false);
+const HintSection: React.FC<Props> = ({ hint, questionId }) => {
+  const [showHint, setShowHint] = useShowHint(false, questionId);
 
   return (
     <Box mt={6} w="100%">
