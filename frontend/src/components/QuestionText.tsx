@@ -11,7 +11,9 @@ type Props = {
 
 const QuestionText: React.FC<Props> = ({ id, text }) => {
   return (
-    <Box bg="gray.100" p={4} borderRadius="md" boxShadow="sm" mb={4}>
+    <Box maxW="86vw" overflowX="hidden"
+      bg="gray.100" p={4} borderRadius="md" boxShadow="sm" mb={4}
+      >
       <Text fontSize="sm" color="gray.500" mb={2}>
         問題ID: {id}
       </Text>
