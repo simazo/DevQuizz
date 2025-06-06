@@ -50,10 +50,9 @@ const QuestionContainer: React.FC<FetchQuestionsParams> = ({categoryId, limit}) 
       <ChoiceList choices={question.choices} isSelectable onSelect={handleSelect} />
       <HintSection hint={question.hint} questionId={question.id} />
       <TweetButton
-        text={`【開発者向クイズ】${question.questionText.slice(0, 50)}・・・続きは`}
-        url={window.location.href}
+        text={`【開発者向クイズ】${question.questionText.slice(0, 60)}・・・`}
+        url={'https://DevQuizz.com'}
         hashtags={[
-          'DevQuizz',
           'デベロッパー', 
           'プログラマ',
           question.mainCategoryName,
