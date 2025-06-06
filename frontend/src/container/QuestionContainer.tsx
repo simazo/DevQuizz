@@ -12,6 +12,7 @@ import QuestionProgress from '../components/QuestionProgress';
 import { PATHS } from '../routes/paths';
 import { Loading } from '../components/Loading';
 import { ErrorMessage } from '../components/ErrorMessage';
+import TweetButton from '../components/TweetButton';
 
 const QuestionContainer: React.FC<FetchQuestionsParams> = ({categoryId, limit}) => {
   const { question, loading, error, next, hasNext, currentIndex, total } = useQuestions({ categoryId, limit });
@@ -48,6 +49,16 @@ const QuestionContainer: React.FC<FetchQuestionsParams> = ({categoryId, limit}) 
       <QuestionText id={question.id} text={question.questionText} />
       <ChoiceList choices={question.choices} isSelectable onSelect={handleSelect} />
       <HintSection hint={question.hint} questionId={question.id} />
+      <TweetButton
+        text={`【開発者向クイズ】${question.questionText.slice(0, 50)}・・・続きは`}
+        url={window.location.href}
+        hashtags={[
+          'DevQuizz',
+          'デベロッパー', 
+          'プログラマ',
+          question.mainCategoryName,
+          question.subCategoryName]}
+      />
     </>
   );
 };
