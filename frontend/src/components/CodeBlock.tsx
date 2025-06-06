@@ -13,7 +13,12 @@ type Props = {
 const CodeBlock: React.FC<Props> = ({ className, children }) => {
   const match = /language-(\w+)/.exec(className || '');
   return match ? (
-    <SyntaxHighlighter language={match[1]} style={oneDark} PreTag="div">
+    <SyntaxHighlighter
+      language={match[1]}
+      style={oneDark}
+      PreTag="div"
+      customStyle={{ fontSize: '0.7rem' }} // ←コードのフォントサイズを調整
+    >
       {String(children).replace(/\n$/, '')}
     </SyntaxHighlighter>
   ) : (
